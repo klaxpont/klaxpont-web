@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-KlaxpontWeb::Application.load_tasks
+Klaxpont::Application.load_tasks
