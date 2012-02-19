@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if lt IE 7]> <html class="no-js ie6 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 ie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="<%=  %>"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
@@ -17,15 +17,25 @@
 </head>
 <body>
 
-  <header>
-    <h1>KLAXPONT</h1>
-  </header>
+  <nav class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+    
+        <a class="brand" href="#">Klaxpont</a>
+        
+      <!-- <h1><%= image_tag "klaxpont_logo.png" %> KLAXPONT</h1> -->
+      </div>
+    </div>
+  </nav>
 
-  <div id="content">
+
+  <div class="container">
   <%= yield %>
   </div>
 
-  <footer></footer>
+  <footer class="container">
+    <p>&copy; Klaxpont 2012.</p>
+  </footer>
 
 </body>
 </html>

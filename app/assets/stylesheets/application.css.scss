@@ -1,64 +1,37 @@
 /*
- * This is a manifest file that'll automatically include all the stylesheets available in this directory
- * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
- * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require bootstrap
  *= require_self
- *= require_tree . 
 */
 
-@import "compass/reset";
-@import "compass/utilities";
-@import "compass/css3";
+// @import "compass/reset";
+// @import "compass";
+// @import "blueprint";
+
+$blueprint-grid-columns: 12;
 
 
 $bg-color: #FFFFE3;
 $main-color: #00C322;
 $second-color: #FF1300;
 $font-color: #000000;
-$font-family: ;
+
+$font-family: "Helvetica Neue", Helvetica, Arial, FreeSans, sans-serif;
+$header-font-family: Cambria, Georgia, Times New Roman, Times, serif;
+
+$content-size: 960px;
 
 
 body {
-  background-color: $bg-color;
-  color: $font-color;
-  font: normal 100%/1.7 $font-family;
-}
-h1, h2{
-  font: {
-    family: $header-font-family;
-    weight: bold;
-  }
-}
-h1 {
-  font-size: 150%;
-  padding: .2em .9em .3em .9em;
-  margin: .4em 0;
-  background-color: $main-color;
-  display: inline-block;
-}
-h2 {
-  font-size: 137%;
-  background-color: $main-color;
-  padding: .2em .3em;
-  margin: 2em 0 .3em;
-}
-h3 {
-  padding: .4em .5em .5em 1em;
-  @include background-image(linear-gradient(left, rgba(0,0,0,.2), rgba(255,255,255,.1) 90%));
-}
-
-header {
-  border-bottom: 1px solid #CCCCCC;
+  position: relative;
+  padding-top: 70px;
 }
 
 iframe {
   border: 1px dotted #cccccc;
 }
 
-h1, h2, h3 {
-  font: bold ;
-}
 
-#content {
-  
+.navbar-fixed-top .brand {
+  font-size: 2.8em;
+  letter-spacing: .1em;
 }
