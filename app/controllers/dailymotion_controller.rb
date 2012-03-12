@@ -4,7 +4,10 @@ class DailymotionController < ApplicationController
   require "uri"
   require "json"
 
-  DAILY_TOKEN_REFRESH_URL = "https://api.dailymotion.com/oauth/token"
+  
+
+  TOKEN_REFRESH_URL = "https://api.dailymotion.com/oauth/token"
+  VIDEOS_URL = "https://api.dailymotion.com/me/videos?access_token=..."
 
 
   respond_to :json
@@ -46,6 +49,13 @@ class DailymotionController < ApplicationController
   end
 
 
+  def get_videos
+    get_request(VIDEOS_URL)
+  end
+
+
+  private
+
   def get_token_by_refresh_token(refresh_token)
     credentials = Klaxpont::Application.config.dailymotion_credentials
     parameters = {
@@ -55,7 +65,7 @@ class DailymotionController < ApplicationController
       :refresh_token => refresh_token
     }
     
-    post_request(parameters)
+    do_post_request(parameters)
   end
 
 
@@ -69,12 +79,12 @@ class DailymotionController < ApplicationController
       :password =>      credentials["password"]
     }
 
-    post_request(parameters)
+    do_post_request(parameters)
   end
 
 
-  def post_request(parameters)
-    uri = URI.parse(DAILY_TOKEN_REFRESH_URL)
+  def do_post_request(parameters)
+    uri = URI.parse(TOKEN_REFRESH_URL)
 
     request = Net::HTTP::Post.new(uri.request_uri)
     request.form_data = parameters
@@ -85,6 +95,24 @@ class DailymotionController < ApplicationController
 
     #response = con.start { |http| http.request(req) }
     http.request(request).body
+  end
+
+  def do_get_request(url, parameters)
+    uri = URI.parse(url)
+
+    request = Net::HTTP::Get.new(uri.request_uri)
+    # request.form_data = parameters
+    
+    get_http.request(request).body
+  end
+
+  def get_http
+    unless @http
+      @http = Net::HTTP.new(URL_DAILYMOTION)
+      @http.use_ssl = true
+      @http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    end
+    @http
   end
 
 end
