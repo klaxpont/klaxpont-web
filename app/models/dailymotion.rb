@@ -1,10 +1,6 @@
 class Dailymotion
-  include MongoMapper::Document
+  include Mongoid::Document
 
-  #attr_accessor :refresh_token
+  field :refresh_token, type: String
 
-  key :refresh_token, String
-
-
-  
 end

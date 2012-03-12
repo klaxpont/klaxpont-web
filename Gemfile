@@ -2,9 +2,10 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.2'
 
+# Mongo stuff.
+gem 'mongoid', '~> 2.4'
+gem 'bson_ext', '~> 1.6'
 
-gem 'mongo_mapper'
-gem 'bson_ext'
 
 
 # Gems used only for assets and not required
