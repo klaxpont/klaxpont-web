@@ -33,9 +33,10 @@ class DailymotionApi
     credentials = Klaxpont::Application.config.dailymotion_credentials
     parameters = {
       :grant_type =>    "refresh_token",
+      :refresh_token => refresh_token,
       :client_id =>     credentials["client_id"],
       :client_secret => credentials["client_secret"],
-      :refresh_token => refresh_token
+      :scope =>         "manage_videos"
     }
     
     post '/oauth/token', :body => parameters
@@ -46,10 +47,11 @@ class DailymotionApi
     credentials = Klaxpont::Application.config.dailymotion_credentials
     parameters = {
       :grant_type =>    "password",
+      :username =>      credentials["username"],
+      :password =>      credentials["password"],
       :client_id =>     credentials["client_id"],
       :client_secret => credentials["client_secret"],
-      :username =>      credentials["username"],
-      :password =>      credentials["password"]
+      :scope =>         "manage_videos"
     }
 
     post '/oauth/token', :body => parameters
