@@ -7,6 +7,10 @@ Klaxpont::Application.routes.draw do
       get "/" => "dailymotion#get_token"
     end
 
+    scope "/videos" do
+      get "/" => "dailymotion#get_videos"
+    end
+
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.

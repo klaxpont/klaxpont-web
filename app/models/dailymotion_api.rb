@@ -5,10 +5,11 @@ class DailymotionApi
   format :json
 
   def self.get_videos
-    puts "je vis des bas, jeux videos"
+    credentials = Klaxpont::Application.config.dailymotion_credentials
+    username = credentials["username"]
     #VIDEOS_URL = "https://api.dailymotion.com/me/videos?access_token=..."
     #get "/me/videos", :query => {:access_token => get_token}
-    ""
+    get "/user/#{username}/videos"
   end
 
   def self.get_token(refresh_token)

@@ -23,7 +23,8 @@ class DailymotionApiTest < ActiveSupport::TestCase
   end
 
 
-  test "videos" do
-    #puts "videos: " + DailymotionApi.videos
+  test "get_videos" do
+    response = DailymotionApi.get_videos
+    puts response.body
   end
 end

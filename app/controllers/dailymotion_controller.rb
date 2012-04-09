@@ -32,7 +32,8 @@ class DailymotionController < ApplicationController
 
 
   def get_videos
-    DailymotionApi.get_videos
+    response = DailymotionApi.get_videos
+    respond_with response.body
   end
 
 end
