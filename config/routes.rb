@@ -9,6 +9,7 @@ Klaxpont::Application.routes.draw do
 
     scope "/videos" do
       get "/" => "dailymotion#get_videos"
+      post "/" => "video#create"
     end
 
   end
