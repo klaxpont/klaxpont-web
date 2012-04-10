@@ -6,6 +6,10 @@ Klaxpont::Application.routes.draw do
     scope "/dailymotion/token" do
       get "/" => "dailymotion#get_token"
     end
+    
+    scope "/users" do
+      post "/" => "user#register"
+    end
 
     scope "/videos" do
       get "/" => "dailymotion#get_videos"
