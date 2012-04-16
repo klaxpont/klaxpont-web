@@ -1,6 +1,7 @@
 class DailymotionController < ApplicationController
   
-  require "json"
+  require "dailymotion_api"
+
   respond_to :json
 
   rescue_from Exception, :with => :error_render_method

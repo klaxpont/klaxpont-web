@@ -1,10 +1,10 @@
-class DailymotionApi
+module DailymotionApi
   include HTTParty
 
   base_uri 'https://api.dailymotion.com'
   format :json
 
-  def self.get_videos
+  def DailymotionApi.get_videos
     credentials = Klaxpont::Application.config.dailymotion_credentials
     username = credentials["username"]
     #VIDEOS_URL = "https://api.dailymotion.com/me/videos?access_token=..."
@@ -12,7 +12,7 @@ class DailymotionApi
     get "/user/#{username}/videos"
   end
 
-  def self.get_token(refresh_token)
+  def DailymotionApi.get_token(refresh_token = '')
 
     # Go with the refresh_token method if `refresh_token` is ok.
     unless refresh_token.to_s.empty?
@@ -30,7 +30,7 @@ class DailymotionApi
   end
 
 
-  def self.get_token_by_refresh_token(refresh_token)
+  def DailymotionApi.get_token_by_refresh_token(refresh_token)
     credentials = Klaxpont::Application.config.dailymotion_credentials
     parameters = {
       :grant_type =>    "refresh_token",
@@ -44,7 +44,7 @@ class DailymotionApi
   end
 
 
-  def self.get_token_by_password
+  def DailymotionApi.get_token_by_password
     credentials = Klaxpont::Application.config.dailymotion_credentials
     parameters = {
       :grant_type =>    "password",

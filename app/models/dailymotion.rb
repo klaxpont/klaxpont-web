@@ -3,23 +3,28 @@ class Dailymotion
 
   field :refresh_token, type: String
 
-  def self.get_dailymotion
-    dailymotion = self.first
-    unless dailymotion
-      dailymotion = Dailymotion.new
+  def self.new
+    instance = self.first
+    unless instance
+      instance = super
+      instance.save
     end
-    dailymotion
+    instance
+  end
+
+  def self.get_instance
+    self.new
   end
 
   def self.get_refresh_token
-    dailymotion = self.get_dailymotion
-    dailymotion.refresh_token
+    instance = self.get_instance
+    instance.refresh_token
   end
 
   def self.save_refresh_token(refresh_token)
-    dailymotion = self.get_dailymotion
-    dailymotion.refresh_token = refresh_token
-    dailymotion.save
+    instance = self.get_instance
+    instance.refresh_token = refresh_token
+    instance.save
   end
 
 end
