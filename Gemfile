@@ -34,13 +34,14 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :development, :test do
-  # Required for Test::Unit support in Rake with ruby 1.9.x
-  gem 'test-unit', :platforms => [:ruby_19]
+  gem 'rspec-rails'
+  #gem 'watchr'
 end
 
 group :test do
   # Pretty printed test output
   gem 'turn', '0.8.2', :require => false
+  gem 'database_cleaner'
 end
 
 group :production do
