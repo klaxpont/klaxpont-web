@@ -1,3 +1,5 @@
+= Klaxpont
+[![Build Status](https://secure.travis-ci.org/klaxpont/klaxpont-web.png)](http://travis-ci.org/klaxpont/klaxpont-web)
 
 == To install the environment:
 http://railsapps.github.com/installing-rails-3-1.html
