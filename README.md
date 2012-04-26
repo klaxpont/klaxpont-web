@@ -1,18 +1,21 @@
-= Klaxpont
 [![Build Status](https://secure.travis-ci.org/klaxpont/klaxpont-web.png)](http://travis-ci.org/klaxpont/klaxpont-web)
 
-== To install the environment:
-http://railsapps.github.com/installing-rails-3-1.html
-http://railsapps.github.com/rails-heroku-tutorial.html
-http://devcenter.heroku.com/articles/rails31_heroku_cedar
+# Install
+
+* http://railsapps.github.com/installing-rails-3-1.html
+* http://railsapps.github.com/rails-heroku-tutorial.html
+* http://devcenter.heroku.com/articles/rails31_heroku_cedar
 
 ## deploy on heroku:
-    
-    git push heroku master
-    heroku logs
+```
+git push heroku master
+heroku logs
+```
 
 ## create indexes on mongodb
 
-    rake db:mongoid:create_indexes
+```
+rake db:mongoid:create_indexes
+```
     
 
