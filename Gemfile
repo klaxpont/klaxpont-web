@@ -9,7 +9,8 @@ gem 'bson_ext', '~> 1.6'
 # Making HTTP requests easier.
 gem 'httparty'
 
-
+gem "geocoder"
+gem "haml"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

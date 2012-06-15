@@ -9,8 +9,14 @@ class Video
   field :state, type: Symbol
   field :embed_html, type: String
 
+  field :latitude, type: Float
+  field :longitude, type: Float
+  # geocoded_by :address
+  # after_validation :geocode, :if => :address_changed?
+  
   index :video_id, unique: true
 
+  
   # Constants
   STATES = %w{ :published :in_review}
 

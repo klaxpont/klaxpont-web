@@ -5,7 +5,8 @@ class VideosController < ApplicationController
     # Get the video_id and the user_id
     # Associate them.
     @video = Video.new :video_id => params[:video_id], :user_id => params[:user_id]
-
+    @video.latitude = params[:latitude]
+    @video.longitude = params[:longitude]
     if @video.save
       render :json => @video, :status => :created #, :location => @video
     else
