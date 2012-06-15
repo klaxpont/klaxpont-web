@@ -30,6 +30,7 @@ GEM
       multi_json (~> 1.0)
     ansi (1.4.2)
     arel (3.0.2)
+    blankslate (2.1.2.4)
     bson (1.6.2)
     bson_ext (1.6.2)
       bson (~> 1.6.2)
@@ -59,6 +60,9 @@ GEM
       multi_json
       multi_xml
     i18n (0.6.0)
+    jbuilder (0.4.0)
+      activesupport (>= 3.0.0)
+      blankslate (>= 2.1.2.4)
     journey (1.0.3)
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
@@ -150,6 +154,7 @@ DEPENDENCIES
   compass (~> 0.12.alpha)
   database_cleaner
   httparty
+  jbuilder
   jquery-rails
   mongoid (~> 2.4)
   rails (= 3.2.2)

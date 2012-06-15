@@ -1,6 +1,5 @@
-class VideoController < ApplicationController
+class VideosController < ApplicationController
   
-  respond_to :json
 
   def create
     # Get the video_id and the user_id
@@ -14,4 +13,7 @@ class VideoController < ApplicationController
     end
   end
 
+  def index
+    @videos = Video.all
+  end
 end
