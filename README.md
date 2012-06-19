@@ -1,3 +1,4 @@
+= INSTALL
 
 == To install the environment:
 http://railsapps.github.com/installing-rails-3-1.html
