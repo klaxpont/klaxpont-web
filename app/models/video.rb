@@ -22,4 +22,6 @@ class Video
   STATES = %w{ :published :in_review}
 
 
+  # Validations
+  validates_presence_of :video_id
 end
