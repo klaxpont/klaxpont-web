@@ -1,5 +1,4 @@
 Klaxpont::Application.routes.draw do
-  get "home/index"
 
   scope "/api", :format => :json do
 

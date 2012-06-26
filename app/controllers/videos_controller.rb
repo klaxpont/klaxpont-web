@@ -8,9 +8,10 @@ class VideosController < ApplicationController
     @video.latitude = params[:latitude]
     @video.longitude = params[:longitude]
     if @video.save
-      render :json => @video, :status => :created #, :location => @video
+      render :action => 'show'
     else
-      respond_with @video.errors, :status => :unprocessable_entity
+      @errors = @video.errors
+      render :partial => 'shared/errors'
     end
   end
 
