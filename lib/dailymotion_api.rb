@@ -76,7 +76,7 @@ module DailymotionApi
   end
 
   private
-  # TODO move to other class as dailymotion_api could be used in another context
+  # TODO: move to other class as dailymotion_api could be used in another context
   def self.parse_videos(list)
     return if list.empty?
     list.each do |item|

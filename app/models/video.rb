@@ -11,6 +11,7 @@ class Video
 
   field :latitude, type: Float
   field :longitude, type: Float
+  # REVIEW: is it necessary ? see geocoded gem doc
   # geocoded_by :address
   # after_validation :geocode, :if => :address_changed?
   

@@ -14,4 +14,6 @@ http://devcenter.heroku.com/articles/rails31_heroku_cedar
 
     rake db:mongoid:create_indexes
     
+= RUN
 
+	mongod
