@@ -12,6 +12,7 @@ Klaxpont::Application.routes.draw do
 
     scope "/videos" do
       get "/" => "videos#index"
+      get "/around_location" => "videos#around_location"
       post "/" => "videos#create"
     end
 

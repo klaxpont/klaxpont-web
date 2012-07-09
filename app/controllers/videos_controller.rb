@@ -19,4 +19,16 @@ class VideosController < ApplicationController
   def index
     @videos = Video.where(:state => :published).all
   end
+
+  def around_location
+    distance = params[:distance].present? ? params[:distance].to_i : 2  
+    
+    @videos = Video.near([params[:longitude].to_f, params[:latitude].to_f], distance).where(:state => :published).all
+    if !@videos.empty?
+      render :file => 'videos/index'
+    else
+      @errors = [{:message => "Sorry, no videos available around you!"}]
+      render :partial => 'shared/errors'
+    end
+  end
 end
