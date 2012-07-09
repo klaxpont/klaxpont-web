@@ -5,8 +5,9 @@ class VideosController < ApplicationController
     # Get the video_id and the user_id
     # Associate them.
     @video = Video.find_or_initialize_by :video_id => params[:video_id], :user_id => params[:user_id]
-    @video.latitude = params[:latitude]
-    @video.longitude = params[:longitude]
+    # OPTIMIZE: this is shit .to_coordinates vs coordinates
+    @video.coordinates = [params[:longitude].to_f,params[:latitude].to_f,]
+
     @video.state = :in_review
     if @video.save
       render :action => 'show'
