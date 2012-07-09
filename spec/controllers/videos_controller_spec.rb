@@ -3,13 +3,15 @@ require 'spec_helper'
 describe VideosController do
 
   describe "POST create" do
-    pending "should return a message if record saved" do
+    it "should return record if record saved" do
       post "create",  :video_id => 'string', :user_id => 123, :latitude => 48.0, :longitude => 59.3, :format => :json
       video = Video.find :first
       video.video_id.should eq('string')
       video.user_id.should eq("123")
       video.latitude.should eq(48.0)
       video.longitude.should eq(59.3)
+      # TODO: add check on format JSON + syntax
+      # curl -X 'POST' http://klaxpont-web.dev/api/videos -d "video_id=xfv&user_id=1&latitude=14.0&longitude=45.4"
     end
 
     pending "shoud display error messages" do
