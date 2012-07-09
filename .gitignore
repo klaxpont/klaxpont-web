@@ -16,3 +16,9 @@
 
 .sass-cache/
 /public/assets/
+
+.rbenv-version
+
+# Text Editors files
+*.sublime-*
+*~

@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.dailymotion.com/oauth/token
+    body:
+      encoding: US-ASCII
+      string: grant_type=password&username=myuser&password=mypassword&client_id=e941854ed7eb772968c84722ab50e079&client_secret=330cb083b2cf3d266cbddd0bfa7883e4&scope=manage_videos
+    headers:
+      connection:
+      - close
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - DMS/1.0.42
+      x-dm-backnode:
+      - 195.8.215.170:80
+      cache-control:
+      - no-store
+      content-type:
+      - application/json
+      p3p:
+      - policyref="http://www.dailymotion.com/w3c/p3p.xml", CP="IDC DSP CURa ADMa
+        DEVa TAIa OUR BUS IND UNI COM NAV INT"
+      date:
+      - Mon, 09 Jul 2012 21:40:26 GMT
+      keep-alive:
+      - timeout=60, max=5000
+      connection:
+      - close
+      set-cookie:
+      - tg=316570; expires=Sat, 09-Jul-2022 21:40:26 GMT; path=/
+      - sid=ca6a29d054c8402fa0007cffa1554155; path=/
+      x-dm-page:
+      - fr.html.oauth
+      content-length:
+      - '167'
+    body:
+      encoding: US-ASCII
+      string: ! '{"access_token":"ZzZXAQkVBVpYBhBBCAYIFVNcFwYAWgQ","expires_in":36000,"refresh_token":"7a712b644185b8d7a3241e3f82c45db36a22a31b","scope":"manage_videos","uid":"xd7k4v"}'
+    http_version: '1.1'
+  recorded_at: Mon, 09 Jul 2012 21:40:26 GMT
+recorded_with: VCR 2.2.2

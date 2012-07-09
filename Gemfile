@@ -9,7 +9,8 @@ gem 'bson_ext', '~> 1.6'
 # Making HTTP requests easier.
 gem 'httparty'
 
-
+gem "geocoder"
+gem "haml"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -18,7 +19,7 @@ group :assets do
   gem 'uglifier',     '>= 1.2.3'
   gem 'compass',      '~> 0.12.alpha'
 end
-
+gem 'jbuilder'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
@@ -35,13 +36,20 @@ gem 'jquery-rails'
 
 group :development, :test do
   gem 'rspec-rails'
+  gem "guard"
+  gem "guard-rspec"
   #gem 'watchr'
+  gem 'pry-rails'
+  gem "awesome_print"
 end
 
 group :test do
   # Pretty printed test output
   gem 'turn', '0.8.2', :require => false
   gem 'database_cleaner'
+
+  gem "vcr"
+  gem "fakeweb"
 end
 
 group :production do
