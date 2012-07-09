@@ -39,6 +39,8 @@ group :development, :test do
   gem "guard"
   gem "guard-rspec"
   #gem 'watchr'
+  gem 'pry-rails'
+  gem "awesome_print"
 end
 
 group :test do
