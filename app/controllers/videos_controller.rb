@@ -4,9 +4,10 @@ class VideosController < ApplicationController
   def create
     # Get the video_id and the user_id
     # Associate them.
-    @video = Video.new :video_id => params[:video_id], :user_id => params[:user_id]
+    @video = Video.find_or_initialize_by :video_id => params[:video_id], :user_id => params[:user_id]
     @video.latitude = params[:latitude]
     @video.longitude = params[:longitude]
+    @video.state = :in_review
     if @video.save
       render :action => 'show'
     else
@@ -16,6 +17,6 @@ class VideosController < ApplicationController
   end
 
   def index
-    @videos = Video.all
+    @videos = Video.where(:state => :published).all
   end
 end

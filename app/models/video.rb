@@ -24,4 +24,5 @@ class Video
 
   # Validations
   validates_presence_of :video_id
+  validates_uniqueness_of :video_id
 end
