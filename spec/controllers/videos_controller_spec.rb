@@ -8,8 +8,7 @@ describe VideosController do
       video = Video.find :first
       video.video_id.should eq('string')
       video.user_id.should eq("123")
-      video.latitude.should eq(48.0)
-      video.longitude.should eq(59.3)
+      video.to_coordinates.should eq([48.0,59.3])# [lat, lon]
       # TODO: add check on format JSON + syntax
       # curl -X 'POST' http://klaxpont-web.dev/api/videos -d "video_id=xfv&user_id=1&latitude=14.0&longitude=45.4"
     end
