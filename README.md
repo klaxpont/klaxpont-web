@@ -13,6 +13,10 @@ http://railsapps.github.com/rails-heroku-tutorial.html
 
 http://devcenter.heroku.com/articles/rails31_heroku_cedar
 
+* install bundle 1.2.0.pre (`ruby` directive in `Gemfile` needs it)
+
+		gem install bundler --pre
+
 * deploy on heroku:
 
 ```
