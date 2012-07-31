@@ -1,3 +1,6 @@
+# Klaxpont
+[![Build Status](https://secure.travis-ci.org/klaxpont/klaxpont-web.png)](http://travis-ci.org/klaxpont/klaxpont-web)
+
 # INSTALL
 
 ## To install the environment:
@@ -21,7 +24,7 @@ http://devcenter.heroku.com/articles/rails31_heroku_cedar
 
 ```
  rake db:mongoid:create_indexes
-```    
+```
 
 # RUN
 
@@ -35,7 +38,7 @@ http://devcenter.heroku.com/articles/rails31_heroku_cedar
 
 ```
 GET /api/videos
-RETURNS JSON RESPONSE list of videos or array of errors 
+RETURNS JSON RESPONSE list of videos or array of errors
 ```
 
 * List of videos near a given location
