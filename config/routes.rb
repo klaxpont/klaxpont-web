@@ -1,7 +1,6 @@
 Klaxpont::Application.routes.draw do
-  get "home/index"
 
-  scope "/api" do
+  scope "/api", :format => :json do
 
     scope "/dailymotion/token" do
       get "/" => "dailymotion#get_token"
@@ -12,10 +11,16 @@ Klaxpont::Application.routes.draw do
     end
 
     scope "/videos" do
-      get "/" => "dailymotion#get_videos"
-      post "/" => "video#create"
+      get "/" => "videos#index"
+      get "/around_location" => "videos#around_location"
+      post "/" => "videos#create"
     end
 
+  end
+
+  # For web users
+  scope "/videos", :format => :html do
+    get "/" => "videos#index"
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.
