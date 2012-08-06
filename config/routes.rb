@@ -3,9 +3,9 @@ Klaxpont::Application.routes.draw do
   scope "/api", :format => :json do
 
     scope "/dailymotion/token" do
-      get "/" => "dailymotion#get_token"
+      get "/" => "access#get_token"
     end
-    
+
     scope "/users" do
       post "/" => "user#register"
     end

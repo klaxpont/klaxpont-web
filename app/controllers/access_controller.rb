@@ -1,5 +1,5 @@
-class DailymotionController < ApplicationController
-  
+class AccessController < ApplicationController
+
   require "dailymotion_api"
 
   respond_to :json
@@ -14,7 +14,7 @@ class DailymotionController < ApplicationController
     respond_with json
     true
   end
-  
+
 
   def get_token
     # Retrieve the `refresh_token` from the db.
@@ -27,15 +27,9 @@ class DailymotionController < ApplicationController
     # end
 
     # Save the `refresh_token`.
-  
+
     Dailymotion.save_refresh_token response["refresh_token"] if response
 
-    respond_with response
-  end
-
-  # TODO: is it useful?
-  def get_videos
-    response = DailymotionApi.get_videos
     respond_with response
   end
 
