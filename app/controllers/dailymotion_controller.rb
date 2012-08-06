@@ -9,6 +9,7 @@ class DailymotionController < ApplicationController
   def error_render_method(e)
     print e.backtrace.join("\n") + "\n"
     print e.message
+    #TODO use partial instead
     json = { :error => true, :message => e.message }.to_json
     respond_with json
     true
@@ -26,15 +27,16 @@ class DailymotionController < ApplicationController
     # end
 
     # Save the `refresh_token`.
-    Dailymotion.save_refresh_token response["refresh_token"]
+  
+    Dailymotion.save_refresh_token response["refresh_token"] if response
 
-    respond_with response.body
+    respond_with response
   end
 
-
+  # TODO: is it useful?
   def get_videos
     response = DailymotionApi.get_videos
-    respond_with response.body
+    respond_with response
   end
 
 end
