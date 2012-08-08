@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.dailymotion.com/oauth/token
+    body:
+      encoding: US-ASCII
+      string: grant_type=password&username=&password=&client_id=&client_secret=&scope=manage_videos
+    headers:
+      connection:
+      - close
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - DMS/1.0.42
+      x-dm-backnode:
+      - 195.8.215.170:80
+      cache-control:
+      - no-store
+      content-type:
+      - application/json
+      p3p:
+      - policyref="http://www.dailymotion.com/w3c/p3p.xml", CP="IDC DSP CURa ADMa
+        DEVa TAIa OUR BUS IND UNI COM NAV INT"
+      date:
+      - Wed, 08 Aug 2012 22:18:25 GMT
+      keep-alive:
+      - timeout=60, max=5000
+      connection:
+      - close
+      set-cookie:
+      - tg=831405; expires=Mon, 08-Aug-2022 22:18:25 GMT; path=/
+      - sid=9134b21d4f78f7f1a00076494155ea3b; path=/
+      x-dm-page:
+      - fr.html.oauth
+      content-length:
+      - '167'
+    body:
+      encoding: US-ASCII
+      string: ! '{"access_token":"YTQFBBhLUwMORwdPG1NbUwQYVFsIBBs","expires_in":36000,"refresh_token":"7a712b644185b8d7a3241e3f82c45db36a22a31b","scope":"manage_videos","uid":"xd7k4v"}'
+    http_version: '1.1'
+  recorded_at: Wed, 08 Aug 2012 22:18:26 GMT
+recorded_with: VCR 2.2.2

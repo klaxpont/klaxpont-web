@@ -16,6 +16,7 @@ module DailymotionApi
     response.parsed_response
   end
 
+  # For output format, see http://www.dailymotion.com/doc/api/authentication.html
   def self.get_token(refresh_token = '')
 
     # Go with the refresh_token method if `refresh_token` is ok.
@@ -43,7 +44,7 @@ module DailymotionApi
       :client_secret => credentials["client_secret"],
       :scope =>         "manage_videos"
     }
-    
+
     response = post '/oauth/token', :body => parameters
     response.parsed_response
   end
@@ -66,10 +67,10 @@ module DailymotionApi
 
   def self.get_all_videos
     next_page = 1
-    begin 
+    begin
       data = DailymotionApi.get_videos(next_page)
       return unless data
-    
+
       next_page = data["page"].to_i + 1
       parse_videos(data["list"])
     end while data['has_more']

@@ -1,6 +1,6 @@
 class AccessController < ApplicationController
 
-  require "dailymotion_api"
+  require "dailymotion_wrapper"
 
   respond_to :json
 
@@ -17,20 +17,8 @@ class AccessController < ApplicationController
 
 
   def get_token
-    # Retrieve the `refresh_token` from the db.
-    refresh_token = Dailymotion.get_refresh_token
-
-    response = DailymotionApi.get_token(refresh_token)
-
-    # unless response.success?
-    #   raise Exception.new response.response
-    # end
-
-    # Save the `refresh_token`.
-
-    Dailymotion.save_refresh_token response["refresh_token"] if response
-
-    respond_with response
+    output = { :access_token => DailymotionWrapper.get_access_token }
+    respond_with output.to_json
   end
 
 end
