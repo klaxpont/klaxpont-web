@@ -1,23 +1,24 @@
 module DailymotionApi
-  include HTTParty
+  require 'httparty'
 
-  base_uri 'https://api.dailymotion.com'
-  format :json
+  module_function
 
-  def self.get_videos(page = 1)
+  BASE_URI = 'https://api.dailymotion.com'
+
+  def get_videos(page = 1)
     credentials = Klaxpont::Application.config.dailymotion_credentials
     username = credentials["username"]
-    relative_url = "/user/#{username}/videos"
+    relative_url = "#{BASE_URI}/user/#{username}/videos"
     fields = %w{id description title published embed_html}
 
     session = get_token
-    response = get relative_url, :query => {:access_token => session['access_token'], :fields => fields.join(","), :page => page}
+    response = HTTParty.get relative_url, :query => {:access_token => session['access_token'], :fields => fields.join(","), :page => page}
 
     response.parsed_response
   end
 
   # For output format, see http://www.dailymotion.com/doc/api/authentication.html
-  def self.get_token(refresh_token = '')
+  def get_token(refresh_token = '')
 
     # Go with the refresh_token method if `refresh_token` is ok.
     unless refresh_token.to_s.empty?
@@ -35,7 +36,7 @@ module DailymotionApi
   end
 
 
-  def self.get_token_by_refresh_token(refresh_token)
+  def get_token_by_refresh_token(refresh_token)
     credentials = Klaxpont::Application.config.dailymotion_credentials
     parameters = {
       :grant_type =>    "refresh_token",
@@ -45,12 +46,12 @@ module DailymotionApi
       :scope =>         "manage_videos"
     }
 
-    response = post '/oauth/token', :body => parameters
+    response = HTTParty.post "#{BASE_URI}/oauth/token", :body => parameters
     response.parsed_response
   end
 
 
-  def self.get_token_by_password
+  def get_token_by_password
     credentials = Klaxpont::Application.config.dailymotion_credentials
     parameters = {
       :grant_type =>    "password",
@@ -61,11 +62,11 @@ module DailymotionApi
       :scope =>         "manage_videos"
     }
 
-    response = post '/oauth/token', :body => parameters
+    response = HTTParty.post "#{BASE_URI}/oauth/token", :body => parameters
     response.parsed_response
   end
 
-  def self.get_all_videos
+  def get_all_videos
     next_page = 1
     begin
       data = DailymotionApi.get_videos(next_page)
@@ -78,7 +79,7 @@ module DailymotionApi
 
   private
   # TODO: move to other class as dailymotion_api could be used in another context
-  def self.parse_videos(list)
+  def parse_videos(list)
     return if list.empty?
     list.each do |item|
       video = Video.find_or_initialize_by :video_id => item["id"]
