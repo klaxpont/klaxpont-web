@@ -4,8 +4,10 @@ describe AccessController do
 
   describe "Get token" do
     it "should return json response with valid token" do
-      get 'get_token', :format => :json
-      response.body.should include('access_token')
+      VCR.use_cassette('dailymotion_wrapper_get_token') do
+        get 'get_token', :format => :json
+        response.body.should include('access_token')
+      end
     end
 
     pending "shoud display error messages" do
