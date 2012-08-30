@@ -1,0 +1,1 @@
+json.(@video, :id)

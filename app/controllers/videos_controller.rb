@@ -1,5 +1,6 @@
 class VideosController < ApplicationController
-  
+
+  respond_to :json
 
   def create
     # Get the video_id and the user_id
@@ -10,7 +11,7 @@ class VideosController < ApplicationController
 
     @video.state = :in_review
     if @video.save
-      render :action => 'show'
+      render :action => 'created'
     else
       @errors = @video.errors
       render :partial => 'shared/errors', :status => 400
@@ -22,8 +23,8 @@ class VideosController < ApplicationController
   end
 
   def around_location
-    distance = params[:distance].present? ? params[:distance].to_i : 2  
-    
+    distance = params[:distance].present? ? params[:distance].to_i : 2
+
     @videos = Video.near([params[:longitude].to_f, params[:latitude].to_f], distance).where(:state => :published).all
     if !@videos.empty?
       render :file => 'videos/index'
