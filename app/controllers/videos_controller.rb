@@ -13,7 +13,7 @@ class VideosController < ApplicationController
       render :action => 'show'
     else
       @errors = @video.errors
-      render :partial => 'shared/errors'
+      render :partial => 'shared/errors', :status => 400
     end
   end
 
@@ -29,7 +29,7 @@ class VideosController < ApplicationController
       render :file => 'videos/index'
     else
       @errors = [{:message => "Sorry, no videos available around you!"}]
-      render :partial => 'shared/errors'
+      render :partial => 'shared/errors', :status => 400
     end
   end
 end
