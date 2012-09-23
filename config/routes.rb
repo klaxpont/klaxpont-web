@@ -6,9 +6,8 @@ Klaxpont::Application.routes.draw do
       get "/" => "access#get_token"
     end
 
-    scope "/users" do
-      post "/" => "user#register"
-    end
+    resources :users, :only => :create
+
 
     scope "/videos" do
       get "/" => "videos#index"
