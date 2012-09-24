@@ -9,7 +9,12 @@ class Video
   field :description, type: String
   field :state, type: Symbol
   field :embed_html, type: String
-  
+
+  field :embed_url, type: String
+  field :swf_url, type: String
+  field :thumbnail_url, type: String
+  field :views_total, type: String
+
   field :address
   field :coordinates, :type => Array
   geocoded_by :address   
