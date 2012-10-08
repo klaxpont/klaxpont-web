@@ -10,11 +10,8 @@ class VideosController < ApplicationController
     @video.coordinates = [params[:longitude].to_f,params[:latitude].to_f,]
 
     @video.state = :in_review
-    if @video.save
-      render :action => 'created'
-    else
-      @errors = @video.errors
-      render :partial => 'shared/errors', :status => 400
+    if !@video.save
+      error_render_method @video.errors.first
     end
   end
 
@@ -29,8 +26,7 @@ class VideosController < ApplicationController
     if !@videos.empty?
       render :file => 'videos/index'
     else
-      @errors = [{:message => "Sorry, no videos available around you!"}]
-      render :partial => 'shared/errors', :status => 400
+      render_error("Sorry, no videos available around you!", 400)
     end
   end
 end
