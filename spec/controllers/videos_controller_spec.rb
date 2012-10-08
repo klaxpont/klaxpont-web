@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe VideosController do
 
-  render_views
 
   describe "POST create" do
     it "should return record if record saved" do
@@ -22,7 +21,9 @@ describe VideosController do
 
     it "shoud display error messages" do
       post "create", :format => :json
-      response.body.should include("errors")
+
+      parsed_body = JSON.parse(response.body)
+      parsed_body.should include("error")
     end
 
   end

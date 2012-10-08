@@ -9,7 +9,7 @@ module DailymotionApi
     credentials = Klaxpont::Application.config.dailymotion_credentials
     username = credentials["username"]
     relative_url = "#{BASE_URI}/user/#{username}/videos"
-    fields = %w{id description title published embed_html}
+    fields = %w{id description title published embed_html embed_url thumbnail_url views_total}
 
     session = get_token
     response = HTTParty.get relative_url, :query => {:access_token => session['access_token'], :fields => fields.join(","), :page => page}
@@ -77,7 +77,7 @@ module DailymotionApi
     end while data['has_more']
   end
 
-  private
+
   # TODO: move to other class as dailymotion_api could be used in another context
   def parse_videos(list)
     return if list.empty?
@@ -87,6 +87,9 @@ module DailymotionApi
       video.description = item["description"]
       video.state = (item["published"]) ? :published : :in_review
       video.embed_html = item["embed_html"]
+      %w(embed_url thumbnail_url views_total swf_url).each do |attribute|
+        video.send("#{attribute}=".to_sym, item[attribute])
+      end
       if(!video.save)
         Rails.logger.error "Failed to saved video #{item['id']}"
       end
