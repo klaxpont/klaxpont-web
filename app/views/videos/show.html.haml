@@ -1,0 +1,6 @@
+.row12.well{style:"height:360px"}
+  .span3
+    %h2= video.title.capitalize
+    %p= video.description
+
+  .span6.offset1= video.embed_html.html_safe
