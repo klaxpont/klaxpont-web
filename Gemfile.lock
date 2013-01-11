@@ -67,7 +67,7 @@ GEM
       guard (>= 0.10.0)
     haml (3.1.4)
     hike (1.2.1)
-    hiredis (0.3.2)
+    hiredis (0.4.5)
     httparty (0.8.1)
       multi_json
       multi_xml
@@ -182,7 +182,7 @@ DEPENDENCIES
   guard
   guard-rspec
   haml
-  hiredis (~> 0.3.1)
+  hiredis (~> 0.4.5)
   httparty
   jbuilder
   jquery-rails
