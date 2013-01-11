@@ -2,14 +2,14 @@ source 'http://rubygems.org'
 
 ruby '1.9.3'
 
-gem 'rails', '3.2.2'
+gem 'rails', '3.2.11'
 
 # Mongo stuff.
 gem 'mongoid', '~> 2.4'
 gem 'bson_ext', '~> 1.6'
 
 # Redis
-gem 'hiredis', '~> 0.3.1'
+gem 'hiredis', '~> 0.4.5'
 gem 'redis', '~> 2.2.0', :require => ['redis/connection/hiredis', 'redis']
 
 # Making HTTP requests easier.
