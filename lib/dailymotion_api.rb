@@ -14,7 +14,7 @@ module DailymotionApi
     credentials = Klaxpont::Application.config.dailymotion_credentials
     username = credentials["username"]
     relative_url = "#{BASE_URI}/user/#{username}/videos"
-    fields = %w{id description title published embed_html embed_url thumbnail_url views_total}
+    fields = %w{id description title status embed_html embed_url thumbnail_url views_total}
 
     response = HTTParty.get relative_url, :query => {:access_token => session['access_token'], :fields => fields.join(","), :page => page}
 
@@ -89,7 +89,11 @@ module DailymotionApi
       video = Video.find_or_initialize_by :video_id => item["id"]
       video.title = item["title"]
       video.description = item["description"]
-      video.state = (item["published"]) ? :published : :in_review
+      if item["status"] == "deleted"
+        next
+      else
+        video.state = (item["status"] == "published") ? :published : :in_review
+      end
       video.embed_html = item["embed_html"]
       %w(embed_url thumbnail_url views_total swf_url).each do |attribute|
         video.send("#{attribute}=".to_sym, item[attribute])
