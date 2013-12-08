@@ -21,4 +21,4 @@
 
 # Text Editors files
 *.sublime-*
-*~
+.powenv
