@@ -5,13 +5,17 @@ module DailymotionApi
 
   BASE_URI = 'https://api.dailymotion.com'
 
+  def session
+    @@session ||= get_token
+  end
+
+
   def get_videos(page = 1)
     credentials = Klaxpont::Application.config.dailymotion_credentials
     username = credentials["username"]
     relative_url = "#{BASE_URI}/user/#{username}/videos"
     fields = %w{id description title published embed_html embed_url thumbnail_url views_total}
 
-    session = get_token
     response = HTTParty.get relative_url, :query => {:access_token => session['access_token'], :fields => fields.join(","), :page => page}
 
     response.parsed_response
