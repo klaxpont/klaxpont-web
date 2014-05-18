@@ -16,6 +16,11 @@ http://devcenter.heroku.com/articles/rails31_heroku_cedar
 * install bundle 1.2.0.pre (`ruby` directive in `Gemfile` needs it)
 
 		gem install bundler --pre
+* needs redis
+```
+brew install redis
+redis-server /usr/local/etc/redis.conf
+```
 
 * deploy on heroku:
 
